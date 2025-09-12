@@ -33,11 +33,18 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+  font:
+    text: Inter Tight
+    code: JetBrains Mono
 
 # Plugins
 plugins:
   - search
   - git-revision-date-localized
+
+# Extra CSS
+extra_css:
+  - stylesheets/extra.css
 
 # Navigation
 nav:
