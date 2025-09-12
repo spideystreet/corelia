@@ -159,3 +159,113 @@
   border-color: #2BC4B8 !important;
   box-shadow: 0 0 0 2px rgba(59, 222, 206, 0.2) !important;
 }
+
+/* Dark mode improvements */
+[data-md-color-scheme="slate"] {
+  /* Dark mode header adjustments */
+  --md-primary-fg-color: #ffffff;
+  --md-primary-bg-color: #000000;
+}
+
+[data-md-color-scheme="slate"] .md-header {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+[data-md-color-scheme="slate"] .md-header__button {
+  color: #ffffff !important;
+}
+
+[data-md-color-scheme="slate"] .md-header__title {
+  color: #ffffff !important;
+}
+
+[data-md-color-scheme="slate"] .md-header__source {
+  color: #ffffff !important;
+}
+
+/* Dark mode table of contents */
+[data-md-color-scheme="slate"] .md-nav__title {
+  background-color: #3BDECE !important;
+  color: #000000 !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link {
+  color: #ffffff !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link:hover {
+  color: #ffffff !important;
+  background-color: rgba(59, 222, 206, 0.2) !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link--active {
+  color: #3BDECE !important;
+  background-color: rgba(59, 222, 206, 0.1) !important;
+}
+
+/* Dark mode tabs */
+[data-md-color-scheme="slate"] .md-tabs {
+  background-color: #3BDECE !important;
+  color: #000000 !important;
+}
+
+[data-md-color-scheme="slate"] .md-tabs__link {
+  color: #000000 !important;
+}
+
+[data-md-color-scheme="slate"] .md-tabs__link:hover {
+  color: #000000 !important;
+  opacity: 0.7;
+}
+
+[data-md-color-scheme="slate"] .md-tabs__link--active {
+  color: #000000 !important;
+  font-weight: 600;
+}
+
+/* Dark mode links */
+[data-md-color-scheme="slate"] .md-typeset a {
+  color: #3BDECE !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset a:hover {
+  color: #2BC4B8 !important;
+}
+
+/* Dark mode code blocks */
+[data-md-color-scheme="slate"] .md-typeset code {
+  background-color: rgba(59, 222, 206, 0.2) !important;
+  color: #ffffff !important;
+}
+
+/* Dark mode search */
+[data-md-color-scheme="slate"] .md-search__input {
+  background-color: rgba(59, 222, 206, 0.2) !important;
+  border: 1px solid #3BDECE !important;
+  color: #ffffff !important;
+}
+
+[data-md-color-scheme="slate"] .md-search__input:focus {
+  border-color: #2BC4B8 !important;
+  box-shadow: 0 0 0 2px rgba(59, 222, 206, 0.3) !important;
+}
+
+/* Light mode adjustments */
+[data-md-color-scheme="default"] {
+  /* Ensure light mode has proper contrast */
+}
+
+[data-md-color-scheme="default"] .md-nav__link {
+  color: #000000 !important;
+}
+
+[data-md-color-scheme="default"] .md-nav__link:hover {
+  color: #000000 !important;
+  background-color: rgba(59, 222, 206, 0.1) !important;
+}
+
+[data-md-color-scheme="default"] .md-nav__link--active {
+  color: #3BDECE !important;
+  background-color: rgba(59, 222, 206, 0.1) !important;
+}

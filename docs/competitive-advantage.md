@@ -16,19 +16,13 @@ Unlike international competitors, Corelia is specifically designed for French me
 - **Cultural Context**: Adaptation to French medical culture and practices
 - **Regulatory Compliance**: Built-in compliance with French healthcare regulations
 
-## Technical Advantages
+## Technical Differentiation
 
-### Model Architecture
-- **DrBERT Foundation**: Pre-trained on French hospital corpus
-- **Domain Expertise**: Specialized for biomedical and clinical domains
-- **Continuous Learning**: Ongoing improvement with real-world data
-- **Open Source**: Transparent, auditable, and customizable
+### Model Specialization
+Corelia leverages DrBERT's foundation, pre-trained specifically on French hospital corpus, providing unmatched domain expertise in biomedical and clinical French terminology. The continuous learning approach ensures ongoing improvement with real-world data, while the open-source nature guarantees transparency, auditability, and customization capabilities.
 
-### Performance Benefits
-- **Accuracy**: Superior performance on French medical text
-- **Speed**: Optimized for French language processing
-- **Reliability**: Robust handling of French medical terminology
-- **Scalability**: Designed for French healthcare system scale
+### Performance Excellence
+The platform delivers superior accuracy on French medical text through optimized French language processing. The system provides robust handling of French medical terminology with reliability designed specifically for French healthcare system scale and requirements.
 
 ## Strategic Positioning
 

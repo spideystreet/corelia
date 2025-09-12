@@ -16,32 +16,13 @@ Corelia provides an AI platform trained, deployed, and governed in France to sig
 
 The platform offers three primary capabilities that address the core challenges of medical data processing. Medical Report Enhancement transforms medical reports and doctor's notes into clean, AI-exploitable insights through advanced natural language processing. Medical Entity Mapping intelligently maps medical entities to ICD-10-FR codes, ensuring compliance with French healthcare standards. Automated Processing streamlines the entire pipeline from raw text to structured data, eliminating manual coding and reducing processing time.
 
-## Technical Approach
+## Strategic Approach
 
-### AI Pipeline Architecture
+Corelia addresses the French medical AI gap through a comprehensive three-stage approach. The platform enhances medical reports using advanced natural language processing, extracts medical entities through specialized French-trained models, and maps these entities to standardized French medical codes. This integrated approach ensures complete compatibility with French healthcare systems while maintaining the highest standards of data sovereignty and privacy protection.
 
-Our processing pipeline consists of three main components:
+### Key Principles
 
-1. **BioMistral-7B**: For enhancing and improving medical notes
-   - Based on Mistral-7B-Instruct-v0.1
-   - Further pre-trained on PubMed Central
-   - Specialized for biomedical domain
-
-2. **DrBERT-7GB**: For extracting medical annotations
-   - Robust pre-trained model in French for biomedical and clinical domains
-   - Trained on French hospital corpus
-   - Optimized for French medical terminology
-
-3. **XMEN**: For mapping extracted entities to ICD-10-FR codes
-   - Automated medical entity recognition and coding
-   - Integration with French medical coding standards
-
-### Strategic Advantages
-
-- **French-First Approach**: Unlike international competitors (Google Gemma, MedPaLM-2, Llama-3) that rely on English or poorly adapted corpora, Corelia is specifically designed for French medical complexity
-- **Open Source**: Fully open-source solution, auditable and adaptable
-- **Sovereign Cloud**: Hosted on sovereign cloud infrastructure (SecNumCloud/Health Data Hub)
-- **GDPR Compliant**: Designed with privacy and data protection from the ground up
+**French-First Design**: Unlike international competitors that rely on English or poorly adapted corpora, Corelia is specifically designed for French medical complexity and terminology. **Open Source Foundation**: The platform is fully open-source, ensuring transparency, auditability, and community-driven development. **Sovereign Infrastructure**: Built and hosted on French sovereign cloud infrastructure, ensuring complete data sovereignty and compliance with French regulations. **Privacy by Design**: GDPR compliance and data protection are built into the system from the ground up, ensuring patient privacy and regulatory compliance.
 
 ## Vision
 

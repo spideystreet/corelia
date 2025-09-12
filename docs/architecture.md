@@ -66,37 +66,21 @@ graph LR
 2. **ICD-10-FR Codes**: Standardized medical classifications
 3. **Final Output**: Structured, coded medical data
 
-## Technical Requirements
+## Technical Specifications
 
-### Infrastructure
-- **Cloud**: Sovereign cloud (SecNumCloud/Health Data Hub)
-- **Compliance**: GDPR, French data protection laws
-- **Security**: End-to-end encryption, audit trails
+### Model Performance
+- **BioMistral-7B**: 2048 token sequence length, biomedical domain specialization
+- **DrBERT-7GB**: BERT-based architecture, French hospital corpus training
+- **XMEN**: Automated ICD-10-FR mapping with high accuracy rates
 
-### Performance
-- **Scalability**: Handle millions of documents annually
-- **Latency**: Real-time processing capabilities
-- **Accuracy**: High precision for medical coding
+### Processing Capabilities
+- **Input**: Unstructured medical text in French
+- **Output**: Structured medical entities with ICD-10-FR codes
+- **Throughput**: Optimized for batch and real-time processing
+- **Accuracy**: High precision medical entity recognition and coding
 
-### Integration
-- **APIs**: RESTful interfaces for system integration
-- **Standards**: FHIR, SNDS compatibility
-- **Interoperability**: Hospital information systems
-
-## Deployment Architecture
-
-### Development Environment
-- **Local Development**: Docker containers for testing
-- **CI/CD**: Automated testing and deployment
-- **Version Control**: Git-based workflow
-
-### Production Environment
-- **Containerization**: Kubernetes orchestration
-- **Monitoring**: Comprehensive logging and metrics
-- **Backup**: Automated data backup and recovery
-
-### Security Measures
-- **Authentication**: Multi-factor authentication
-- **Authorization**: Role-based access control
-- **Encryption**: Data encryption at rest and in transit
-- **Audit**: Complete audit trails for compliance
+### System Integration
+- **APIs**: RESTful interfaces for seamless integration
+- **Standards**: FHIR, SNDS compatibility for French healthcare systems
+- **Formats**: JSON output with standardized medical coding
+- **Interoperability**: Direct integration with hospital information systems
