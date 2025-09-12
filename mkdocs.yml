@@ -53,3 +53,7 @@ extra_css:
 # Navigation
 nav:
   - Home: index.md
+  - Overview: overview.md
+  - Architecture: architecture.md
+  - Datasets: datasets.md
+  - Competitive Advantage: competitive-advantage.md
