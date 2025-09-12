@@ -1,1 +1,44 @@
-site_name: My Docs
+site_name: Corelia Documentation
+site_description: Documentation for Corelia project
+site_author: Corelia Team
+site_url: https://corelia.github.io
+
+# Repository
+repo_name: corelia/corelia
+repo_url: https://github.com/corelia/corelia
+edit_uri: edit/main/docs/
+
+# Theme
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+# Plugins
+plugins:
+  - search
+  - git-revision-date-localized
+
+# Navigation
+nav:
+  - Home: index.md

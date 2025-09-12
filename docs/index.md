@@ -1,17 +1,13 @@
-# Welcome to MkDocs
+# Welcome to Corelia
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Welcome to the Corelia project documentation.
 
-## Commands
+This is a simple documentation site built with MkDocs.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## About
 
-## Project layout
+Corelia is a project in development. More documentation will be added as the project evolves.
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+---
+
+*This documentation is built with [MkDocs](https://www.mkdocs.org) and the [Material theme](https://squidfunk.github.io/mkdocs-material/).*
