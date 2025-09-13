@@ -36,13 +36,45 @@ class ModelSaver:
             self.logger.warning("No HF_TOKEN found, cannot upload to Hub")
             self.api = None
     
+    def create_hf_repo(self, model_name: str, private: bool = True) -> Optional[str]:
+        """
+        Create a new repository on Hugging Face Hub.
+        
+        Args:
+            model_name: Name for the model repository
+            private: Whether to make the repository private
+            
+        Returns:
+            Repository URL if successful, None otherwise
+        """
+        if not self.api:
+            self.logger.error("No HF_TOKEN available, cannot create repo")
+            return None
+        
+        try:
+            self.logger.info(f"Creating Hugging Face repository: {model_name}")
+            
+            repo_url = self.api.create_repo(
+                repo_id=model_name,
+                private=private,
+                exist_ok=True
+            )
+            
+            self.logger.info(f"Repository created successfully: {repo_url}")
+            return repo_url
+            
+        except Exception as e:
+            self.logger.error(f"Failed to create repository: {e}")
+            return None
+    
     def save_to_huggingface_hub(
         self, 
         model: Any, 
         tokenizer: Any, 
         model_name: str,
         commit_message: str = "Upload trained model",
-        private: bool = True
+        private: bool = True,
+        create_repo: bool = True
     ) -> Optional[str]:
         """
         Save model and tokenizer to Hugging Face Hub.
@@ -53,6 +85,7 @@ class ModelSaver:
             model_name: Name for the model on HF Hub
             commit_message: Git commit message
             private: Whether to make the model private
+            create_repo: Whether to create the repository if it doesn't exist
             
         Returns:
             Model URL if successful, None otherwise
@@ -63,6 +96,10 @@ class ModelSaver:
         
         try:
             self.logger.info(f"Saving model to Hugging Face Hub: {model_name}")
+            
+            # Create repository if requested
+            if create_repo:
+                self.create_hf_repo(model_name, private)
             
             # Create temporary directory
             temp_dir = Path(f"./temp_{model_name}")
@@ -76,12 +113,6 @@ class ModelSaver:
             self._create_model_card(temp_dir, model_name)
             
             # Upload to Hub
-            repo_url = self.api.create_repo(
-                repo_id=model_name,
-                private=private,
-                exist_ok=True
-            )
-            
             self.api.upload_folder(
                 folder_path=temp_dir,
                 repo_id=model_name,
@@ -91,6 +122,7 @@ class ModelSaver:
             # Cleanup
             shutil.rmtree(temp_dir)
             
+            repo_url = f"https://huggingface.co/{model_name}"
             self.logger.info(f"Model successfully uploaded to: {repo_url}")
             return repo_url
             
@@ -222,8 +254,20 @@ class ModelSaver:
             raise
     
     def _create_model_card(self, model_dir: Path, model_name: str) -> None:
-        """Create a model card for the saved model."""
-        model_card = f"""---
+        """Create a model card for the saved model using template."""
+        try:
+            # Load template
+            template_path = Path(__file__).parent.parent / "templates" / "model_readme_template.md"
+            
+            if template_path.exists():
+                with open(template_path, 'r', encoding='utf-8') as f:
+                    template = f.read()
+                
+                # Replace placeholders
+                model_card = template.format(model_name=model_name)
+            else:
+                # Fallback to simple template
+                model_card = f"""---
 language: fr
 license: apache-2.0
 tags:
@@ -241,21 +285,6 @@ tags:
 
 This model is a LoRA fine-tuned version of Mistral-7B for French medical text processing, developed as part of the Corelia project.
 
-## Training Data
-
-The model was fine-tuned on the following French medical datasets:
-- NACHOS (50% weight)
-- MediQAl (25% weight) 
-- FRASIMED (15% weight)
-
-## Fine-tuning Method
-
-- **Base Model**: mistralai/Mistral-7B-v0.1
-- **Method**: LoRA (Low-Rank Adaptation)
-- **Target Modules**: q_proj, k_proj, v_proj, o_proj
-- **Rank**: 16
-- **Alpha**: 32
-
 ## Usage
 
 ```python
@@ -263,38 +292,18 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 
 tokenizer = AutoTokenizer.from_pretrained("{model_name}")
 model = AutoModelForCausalLM.from_pretrained("{model_name}")
-
-# Example usage
-text = "Patient présentant des symptômes de..."
-inputs = tokenizer(text, return_tensors="pt")
-outputs = model.generate(**inputs, max_length=100)
-result = tokenizer.decode(outputs[0], skip_special_tokens=True)
-```
-
-## Performance
-
-This model is designed for French medical text processing and should be evaluated on relevant medical tasks.
-
-## Limitations
-
-- This model is a proof-of-concept and should not be used for medical administrative purposes
-- Performance may vary on different medical domains
-- Requires proper evaluation before production use
-
-## Citation
-
-```bibtex
-@software{{corelia2024,
-  title={{Corelia: French Medical AI for Healthcare}},
-  author={{Corelia Team}},
-  year={{2024}},
-  url={{https://github.com/spideystreet/corelia}}
-}}
 ```
 """
-        
-        with open(model_dir / "README.md", 'w', encoding='utf-8') as f:
-            f.write(model_card)
+            
+            with open(model_dir / "README.md", 'w', encoding='utf-8') as f:
+                f.write(model_card)
+                
+        except Exception as e:
+            self.logger.error(f"Failed to create model card: {e}")
+            # Create minimal README as fallback
+            minimal_readme = f"# {model_name}\n\nLoRA fine-tuned Mistral-7B for French medical text processing."
+            with open(model_dir / "README.md", 'w', encoding='utf-8') as f:
+                f.write(minimal_readme)
     
     def load_model_from_mlflow(self, model_name: str, version: str = "latest") -> tuple:
         """

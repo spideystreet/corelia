@@ -68,15 +68,39 @@ class DatasetLoader:
             self.logger.error(f"Failed to load dataset {dataset_name}: {e}")
             raise
     
-    def load_mistral_datasets(self, max_samples: Optional[int] = None) -> Dict[str, Dataset]:
+    def get_dataset_splits(self, dataset_name: str) -> List[str]:
         """
-        Load all datasets for Mistral-7B training.
+        Get available splits for a dataset.
+        
+        Args:
+            dataset_name: Name of the dataset
+            
+        Returns:
+            List of available splits
+        """
+        try:
+            dataset_info = load_dataset(dataset_name, split=None)
+            splits = list(dataset_info.keys())
+            self.logger.info(f"Available splits for {dataset_name}: {splits}")
+            return splits
+        except Exception as e:
+            self.logger.error(f"Failed to get splits for {dataset_name}: {e}")
+            return ["train"]  # Default fallback
+    
+    def load_mistral_datasets(
+        self, 
+        max_samples: Optional[int] = None,
+        include_test: bool = False
+    ) -> Dict[str, Dict[str, Any]]:
+        """
+        Load all datasets for Mistral-7B training with proper splits.
         
         Args:
             max_samples: Maximum samples per dataset (for testing)
+            include_test: Whether to load test splits for evaluation
             
         Returns:
-            Dictionary of loaded datasets with their weights
+            Dictionary of loaded datasets with their weights and splits
         """
         datasets_config = {
             "chapin/NACHOS_large": 0.5,
@@ -88,16 +112,44 @@ class DatasetLoader:
         
         for dataset_name, weight in datasets_config.items():
             try:
-                dataset = self.load_dataset_from_hub(
-                    dataset_name, 
-                    split="train",
-                    max_samples=max_samples
-                )
-                loaded_datasets[dataset_name] = {
-                    "dataset": dataset,
-                    "weight": weight
+                # Get available splits
+                splits = self.get_dataset_splits(dataset_name)
+                
+                dataset_info = {
+                    "weight": weight,
+                    "splits": {}
                 }
-                self.logger.info(f"Loaded {dataset_name} with weight {weight}")
+                
+                # Load train split
+                if "train" in splits:
+                    train_dataset = self.load_dataset_from_hub(
+                        dataset_name, 
+                        split="train",
+                        max_samples=max_samples
+                    )
+                    dataset_info["splits"]["train"] = train_dataset
+                
+                # Load validation split
+                if "validation" in splits or "val" in splits:
+                    val_split = "validation" if "validation" in splits else "val"
+                    val_dataset = self.load_dataset_from_hub(
+                        dataset_name, 
+                        split=val_split,
+                        max_samples=max_samples
+                    )
+                    dataset_info["splits"]["validation"] = val_dataset
+                
+                # Load test split if requested
+                if include_test and "test" in splits:
+                    test_dataset = self.load_dataset_from_hub(
+                        dataset_name, 
+                        split="test",
+                        max_samples=max_samples
+                    )
+                    dataset_info["splits"]["test"] = test_dataset
+                
+                loaded_datasets[dataset_name] = dataset_info
+                self.logger.info(f"Loaded {dataset_name} with weight {weight} and splits: {list(dataset_info['splits'].keys())}")
                 
             except Exception as e:
                 self.logger.error(f"Failed to load {dataset_name}: {e}")
