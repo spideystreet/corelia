@@ -2,6 +2,8 @@
   <img src="docs/assets/logos/logo-and-name.png" alt="Corelia Logo" width="300">
 </div>
 
+</br>
+
 <div align="center">
   <strong>Open-source AI platform for French medical report processing</strong>
 </div>
@@ -11,9 +13,16 @@
     <img src="https://img.shields.io/badge/license-AGPL--3.0-blue.svg" alt="License">
   </a>
   <a href="https://github.com/spideystreet/corelia">
-    <img src="https://img.shields.io/badge/status-active-green.svg" alt="Status">
+    <img src="https://img.shields.io/badge/status-in%20development-orange.svg" alt="Status">
   </a>
 </div>
+
+</br>
+
+> ⚠️ **Important Notice**: This project is currently in active development. 
+> ***Do not use for any medical administrative purposes,*** as no stable release is available yet. 
+
+This is an early-stage project that has just begun development.
 
 ---
 
@@ -75,9 +84,6 @@ cd corelia
 
 # Install dependencies
 uv sync
-
-# Run the application
-python main.py
 ```
 
 ## Documentation
