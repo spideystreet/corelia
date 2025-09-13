@@ -48,17 +48,17 @@ Corelia provides a sovereign AI platform that:
 ## ICD-10-FR Code Proposals
 
 <div align="center">
-  <img src="docs/assets/cim-10-fr-proposal.png" alt="ICD-10-FR Code Proposals" width="400">
+  <img src="docs/assets/cim-10-fr-proposal.png" alt="ICD-10-FR Code Proposals" width="600">
   <br><em>AI-generated code suggestions for medical validation</em>
 </div>
 
 ## Key Features
 
-- 🇫🇷 **French-First Design** - Built specifically for French medical terminology
-- 🔒 **Data Sovereignty** - SecNumCloud certified infrastructure
-- 📊 **High Accuracy** - >90% accuracy rates in medical entity extraction
-- 🏥 **Healthcare Compliance** - Full ICD-10-FR compatibility
-- 🔓 **Open Source** - Transparent and community-driven development
+- **French-First Design** - Built specifically for French medical terminology
+- **Data Sovereignty** - SecNumCloud certified infrastructure
+- **High Accuracy** - >90% accuracy rates in medical entity extraction
+- **Healthcare Compliance** - Full ICD-10-FR compatibility
+- **Open Source** - Transparent and community-driven development
 
 
 <div align="center">
