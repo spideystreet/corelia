@@ -1,5 +1,5 @@
 """
-Model evaluation service for text generation and NER tasks.
+Model evaluation service for Mistral-7B text generation.
 """
 
 import os
@@ -19,7 +19,7 @@ from ..utils.logging import log_to_mlflow
 
 class ModelEvaluator:
     """
-    Service for evaluating Mistral-7B and DrBERT models.
+    Service for evaluating Mistral-7B text generation models.
     """
     
     def __init__(self):
@@ -103,75 +103,6 @@ class ModelEvaluator:
         self.logger.info("Text generation evaluation completed")
         return metrics
     
-    def evaluate_ner_model(
-        self, 
-        model: Any, 
-        tokenizer: Any, 
-        test_dataset: Dataset,
-        max_samples: Optional[int] = None
-    ) -> Dict[str, float]:
-        """
-        Evaluate NER model (DrBERT) using precision, recall, F1.
-        
-        Args:
-            model: Trained NER model
-            tokenizer: Model tokenizer
-            test_dataset: Test dataset
-            max_samples: Maximum samples to evaluate
-            
-        Returns:
-            Dictionary of evaluation metrics
-        """
-        self.logger.info("Starting NER model evaluation")
-        
-        # Limit samples if specified
-        if max_samples and len(test_dataset) > max_samples:
-            test_dataset = test_dataset.select(range(max_samples))
-            self.logger.info(f"Limited evaluation to {max_samples} samples")
-        
-        # Prepare data
-        all_predictions = []
-        all_references = []
-        
-        model.eval()
-        with torch.no_grad():
-            for i, sample in enumerate(test_dataset):
-                if i % 10 == 0:
-                    self.logger.info(f"Evaluating NER sample {i}/{len(test_dataset)}")
-                
-                # Get tokens and labels
-                tokens = sample.get('tokens', [])
-                labels = sample.get('ner_tags', [])
-                
-                if not tokens or not labels:
-                    continue
-                
-                # Tokenize
-                inputs = tokenizer(tokens, is_split_into_words=True, return_tensors="pt", padding=True)
-                
-                # Move to device
-                if torch.cuda.is_available():
-                    inputs = {k: v.cuda() for k, v in inputs.items()}
-                
-                # Predict
-                outputs = model(**inputs)
-                predictions = torch.argmax(outputs.logits, dim=-1)
-                
-                # Align predictions with original tokens
-                aligned_predictions = self._align_predictions_with_tokens(
-                    predictions[0].cpu().numpy(), 
-                    inputs['input_ids'][0].cpu().numpy(), 
-                    tokenizer
-                )
-                
-                all_predictions.extend(aligned_predictions[:len(labels)])
-                all_references.extend(labels[:len(aligned_predictions)])
-        
-        # Calculate NER metrics
-        metrics = self._calculate_ner_metrics(all_predictions, all_references)
-        
-        self.logger.info("NER model evaluation completed")
-        return metrics
     
     def _calculate_generation_metrics(
         self, 
@@ -207,44 +138,6 @@ class ModelEvaluator:
         
         return metrics
     
-    def _calculate_ner_metrics(
-        self, 
-        predictions: List[int], 
-        references: List[int]
-    ) -> Dict[str, float]:
-        """Calculate NER precision, recall, F1 metrics."""
-        from sklearn.metrics import precision_recall_fscore_support, classification_report
-        
-        # Calculate metrics
-        precision, recall, f1, support = precision_recall_fscore_support(
-            references, predictions, average='weighted', zero_division=0
-        )
-        
-        metrics = {
-            'ner_precision': precision,
-            'ner_recall': recall,
-            'ner_f1': f1,
-            'ner_support': support
-        }
-        
-        return metrics
-    
-    def _align_predictions_with_tokens(
-        self, 
-        predictions: np.ndarray, 
-        input_ids: np.ndarray, 
-        tokenizer: Any
-    ) -> List[int]:
-        """Align model predictions with original tokens."""
-        # Remove special tokens (CLS, SEP, PAD)
-        special_tokens = [tokenizer.cls_token_id, tokenizer.sep_token_id, tokenizer.pad_token_id]
-        aligned_predictions = []
-        
-        for i, token_id in enumerate(input_ids):
-            if token_id not in special_tokens:
-                aligned_predictions.append(predictions[i])
-        
-        return aligned_predictions
     
     def log_metrics_to_mlflow(self, metrics: Dict[str, float], model_name: str) -> None:
         """Log evaluation metrics to MLflow."""

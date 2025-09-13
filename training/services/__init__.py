@@ -1,5 +1,5 @@
 """
-Training services for Corelia models.
+Training services for Mistral-7B fine-tuning.
 """
 
 from .dataset_loader import DatasetLoader

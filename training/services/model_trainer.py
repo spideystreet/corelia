@@ -1,5 +1,5 @@
 """
-Model training service for Mistral-7B and DrBERT fine-tuning.
+Model training service for Mistral-7B fine-tuning with LoRA.
 """
 
 import os
@@ -25,7 +25,7 @@ from ..utils.metrics import compute_metrics
 
 class ModelTrainer:
     """
-    Service for training Mistral-7B and DrBERT models with LoRA.
+    Service for training Mistral-7B models with LoRA fine-tuning.
     """
     
     def __init__(self, config_path: str):

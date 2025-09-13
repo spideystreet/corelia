@@ -1,5 +1,5 @@
 """
-Model saving service for Hugging Face Hub and MLflow.
+Model saving service for Mistral-7B models to Hugging Face Hub and MLflow.
 """
 
 import os
@@ -18,7 +18,7 @@ from ..utils.logging import log_to_mlflow
 
 class ModelSaver:
     """
-    Service for saving models to Hugging Face Hub and MLflow.
+    Service for saving Mistral-7B models to Hugging Face Hub and MLflow.
     """
     
     def __init__(self):
@@ -203,9 +203,11 @@ class ModelSaver:
             model_info = {
                 "model_name": model_name,
                 "model_type": "causal_lm",
+                "base_model": "mistralai/Mistral-7B-v0.1",
                 "framework": "pytorch",
                 "language": "french",
-                "domain": "medical"
+                "domain": "medical",
+                "fine_tuning": "lora"
             }
             
             import json
@@ -237,7 +239,7 @@ tags:
 
 ## Model Description
 
-This model is a fine-tuned version of Mistral-7B for French medical text processing, developed as part of the Corelia project.
+This model is a LoRA fine-tuned version of Mistral-7B for French medical text processing, developed as part of the Corelia project.
 
 ## Training Data
 
@@ -245,6 +247,14 @@ The model was fine-tuned on the following French medical datasets:
 - NACHOS (50% weight)
 - MediQAl (25% weight) 
 - FRASIMED (15% weight)
+
+## Fine-tuning Method
+
+- **Base Model**: mistralai/Mistral-7B-v0.1
+- **Method**: LoRA (Low-Rank Adaptation)
+- **Target Modules**: q_proj, k_proj, v_proj, o_proj
+- **Rank**: 16
+- **Alpha**: 32
 
 ## Usage
 

@@ -1,5 +1,5 @@
 """
-Dataset loading service for French medical datasets.
+Dataset loading service for Mistral-7B fine-tuning datasets.
 """
 
 import os
@@ -13,7 +13,7 @@ from ..utils.config import load_training_config, get_env_var, get_env_int
 
 class DatasetLoader:
     """
-    Service for loading and preprocessing French medical datasets.
+    Service for loading and preprocessing datasets for Mistral-7B fine-tuning.
     """
     
     def __init__(self):
@@ -106,39 +106,6 @@ class DatasetLoader:
         
         return loaded_datasets
     
-    def load_drbert_datasets(self, max_samples: Optional[int] = None) -> Dict[str, Dataset]:
-        """
-        Load all datasets for DrBERT NER training.
-        
-        Args:
-            max_samples: Maximum samples per dataset (for testing)
-            
-        Returns:
-            Dictionary of loaded datasets
-        """
-        datasets_config = [
-            "bigbio/mantra_gsc",
-            "DrBenchmark/QUAERO", 
-            "TypicaAI/MedicalNER_Fr"
-        ]
-        
-        loaded_datasets = {}
-        
-        for dataset_name in datasets_config:
-            try:
-                dataset = self.load_dataset_from_hub(
-                    dataset_name,
-                    split="train", 
-                    max_samples=max_samples
-                )
-                loaded_datasets[dataset_name] = dataset
-                self.logger.info(f"Loaded DrBERT dataset: {dataset_name}")
-                
-            except Exception as e:
-                self.logger.error(f"Failed to load {dataset_name}: {e}")
-                continue
-        
-        return loaded_datasets
     
     def get_dataset_info(self, dataset: Dataset) -> Dict[str, Union[int, List[str]]]:
         """
