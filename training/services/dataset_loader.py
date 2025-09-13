@@ -8,7 +8,7 @@ from datasets import Dataset, DatasetDict, load_dataset
 from huggingface_hub import login
 import logging
 
-from ..utils.config import load_training_config, get_env_var, get_env_int
+from ..utils.config import load_training_config, get_env_var, get_env_int, get_env_dict
 
 
 class DatasetLoader:
@@ -102,11 +102,15 @@ class DatasetLoader:
         Returns:
             Dictionary of loaded datasets with their weights and splits
         """
-        datasets_config = {
-            "chapin/NACHOS_large": 0.5,
-            "Abirate/mediqal": 0.25,
-            "alicelacaille/FRASIMED": 0.15
-        }
+        # Get datasets configuration from environment
+        datasets_config = get_env_dict(
+            "MISTRAL_DATASETS", 
+            {
+                "chapin/NACHOS_large": 0.5,
+                "Abirate/mediqal": 0.25,
+                "alicelacaille/FRASIMED": 0.15
+            }
+        )
         
         loaded_datasets = {}
         

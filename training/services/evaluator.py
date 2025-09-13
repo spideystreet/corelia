@@ -10,10 +10,11 @@ from datasets import Dataset
 import logging
 from rouge_score import rouge_scorer
 from bert_score import score as bert_score
+from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import mlflow
 
-from ..utils.config import load_training_config, get_env_var
+from ..utils.config import load_training_config, get_env_var, get_env_list
 from ..utils.logging import log_to_mlflow
 
 
@@ -27,10 +28,18 @@ class ModelEvaluator:
         load_training_config()
         self.logger = logging.getLogger("corelia.training.evaluator")
         
-        # Initialize ROUGE scorer
-        self.rouge_scorer = rouge_scorer.RougeScorer(['rouge1', 'rouge2', 'rougeL'], use_stemmer=True)
+        # Get enabled metrics from environment
+        self.enabled_metrics = get_env_list("EVALUATION_METRICS", ["rouge", "bertscore", "perplexity"])
         
-        self.logger.info("Model evaluator initialized")
+        # Initialize ROUGE scorer if needed
+        if "rouge" in self.enabled_metrics:
+            self.rouge_scorer = rouge_scorer.RougeScorer(['rouge1', 'rouge2', 'rougeL'], use_stemmer=True)
+        
+        # Initialize BLEU smoothing function if needed
+        if "bleu" in self.enabled_metrics:
+            self.bleu_smoothing = SmoothingFunction().method1
+        
+        self.logger.info(f"Model evaluator initialized with metrics: {self.enabled_metrics}")
     
     def evaluate_text_generation(
         self, 
@@ -109,32 +118,51 @@ class ModelEvaluator:
         predictions: List[str], 
         references: List[str]
     ) -> Dict[str, float]:
-        """Calculate ROUGE and BERTScore metrics."""
+        """Calculate generation metrics based on enabled metrics."""
         metrics = {}
         
         # ROUGE metrics
-        rouge_scores = {'rouge1': [], 'rouge2': [], 'rougeL': []}
-        
-        for pred, ref in zip(predictions, references):
-            scores = self.rouge_scorer.score(ref, pred)
-            for metric in rouge_scores.keys():
-                rouge_scores[metric].append(scores[metric].fmeasure)
-        
-        # Average ROUGE scores
-        for metric, scores in rouge_scores.items():
-            metrics[f'rouge_{metric}'] = np.mean(scores)
+        if "rouge" in self.enabled_metrics:
+            rouge_scores = {'rouge1': [], 'rouge2': [], 'rougeL': []}
+            
+            for pred, ref in zip(predictions, references):
+                scores = self.rouge_scorer.score(ref, pred)
+                for metric in rouge_scores.keys():
+                    rouge_scores[metric].append(scores[metric].fmeasure)
+            
+            # Average ROUGE scores
+            for metric, scores in rouge_scores.items():
+                metrics[f'rouge_{metric}'] = np.mean(scores)
         
         # BERTScore
-        try:
-            P, R, F1 = bert_score(predictions, references, lang="fr", verbose=False)
-            metrics['bertscore_precision'] = P.mean().item()
-            metrics['bertscore_recall'] = R.mean().item()
-            metrics['bertscore_f1'] = F1.mean().item()
-        except Exception as e:
-            self.logger.warning(f"BERTScore calculation failed: {e}")
-            metrics['bertscore_precision'] = 0.0
-            metrics['bertscore_recall'] = 0.0
-            metrics['bertscore_f1'] = 0.0
+        if "bertscore" in self.enabled_metrics:
+            try:
+                P, R, F1 = bert_score(predictions, references, lang="fr", verbose=False)
+                metrics['bertscore_precision'] = P.mean().item()
+                metrics['bertscore_recall'] = R.mean().item()
+                metrics['bertscore_f1'] = F1.mean().item()
+            except Exception as e:
+                self.logger.warning(f"BERTScore calculation failed: {e}")
+                metrics['bertscore_precision'] = 0.0
+                metrics['bertscore_recall'] = 0.0
+                metrics['bertscore_f1'] = 0.0
+        
+        # BLEU score
+        if "bleu" in self.enabled_metrics:
+            bleu_scores = []
+            for pred, ref in zip(predictions, references):
+                # Tokenize for BLEU calculation
+                pred_tokens = pred.split()
+                ref_tokens = ref.split()
+                
+                if len(pred_tokens) > 0 and len(ref_tokens) > 0:
+                    bleu = sentence_bleu([ref_tokens], pred_tokens, smoothing_function=self.bleu_smoothing)
+                    bleu_scores.append(bleu)
+            
+            if bleu_scores:
+                metrics['bleu'] = np.mean(bleu_scores)
+            else:
+                metrics['bleu'] = 0.0
         
         return metrics
     

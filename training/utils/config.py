@@ -4,7 +4,7 @@ Configuration utilities for training.
 
 import os
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List, Dict
 from dotenv import load_dotenv
 
 
@@ -87,3 +87,46 @@ def get_env_float(key: str, default: Optional[float] = None) -> float:
             raise ValueError(f"Environment variable {key} is required but not set")
         return default
     return float(value)
+
+
+def get_env_list(key: str, default: List[str]) -> List[str]:
+    """
+    Get environment variable as comma-separated list.
+    
+    Args:
+        key: Environment variable name
+        default: Default list value
+        
+    Returns:
+        List of strings from comma-separated environment variable
+    """
+    value = os.getenv(key, "")
+    if not value:
+        return default
+    return [item.strip() for item in value.split(",") if item.strip()]
+
+
+def get_env_dict(key: str, default: Dict[str, float]) -> Dict[str, float]:
+    """
+    Get environment variable as key:value dictionary.
+    
+    Args:
+        key: Environment variable name
+        default: Default dictionary value
+        
+    Returns:
+        Dictionary parsed from key:value pairs in environment variable
+    """
+    value = os.getenv(key, "")
+    if not value:
+        return default
+    
+    result = {}
+    for item in value.split(","):
+        if ":" in item:
+            key_part, value_part = item.split(":", 1)
+            try:
+                result[key_part.strip()] = float(value_part.strip())
+            except ValueError:
+                continue
+    return result
