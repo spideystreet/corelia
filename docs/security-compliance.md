@@ -1,5 +1,13 @@
 # Security & Compliance
 
+## EU AI Act Risk Classification
+
+Corelia falls under the **High Risk** category of the EU AI Act due to its medical administrative decision-making capabilities. The following pyramid illustrates the risk classification framework:
+
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="../assets/ai-act-pyramid.png" alt="EU AI Act Risk Classification Pyramid" style="max-width: 600px; height: auto;">
+</div>
+
 ## Data Protection Framework
 
 ### GDPR Compliance
