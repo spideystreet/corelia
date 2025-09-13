@@ -29,7 +29,7 @@ class ModelEvaluator:
         self.logger = logging.getLogger("corelia.training.evaluator")
         
         # Get enabled metrics from environment
-        self.enabled_metrics = get_env_list("EVALUATION_METRICS", ["rouge", "bertscore", "perplexity"])
+        self.enabled_metrics = get_env_list("EVALUATION_METRICS")
         
         # Initialize ROUGE scorer if needed
         if "rouge" in self.enabled_metrics:

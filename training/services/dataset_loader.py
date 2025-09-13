@@ -106,9 +106,9 @@ class DatasetLoader:
         datasets_config = get_env_dict(
             "DATASETS_MISTRAL", 
             {
-                "chapin/NACHOS_large": get_env_float("DATASET_WEIGHT_NACHOS", 0.5),
-                "Abirate/mediqal": get_env_float("DATASET_WEIGHT_MEDIQAL", 0.25),
-                "alicelacaille/FRASIMED": get_env_float("DATASET_WEIGHT_FRASIMED", 0.15)
+                "chapin/NACHOS_large": get_env_float("DATASET_WEIGHT_NACHOS"),
+                "Abirate/mediqal": get_env_float("DATASET_WEIGHT_MEDIQAL"),
+                "alicelacaille/FRASIMED": get_env_float("DATASET_WEIGHT_FRASIMED")
             }
         )
         

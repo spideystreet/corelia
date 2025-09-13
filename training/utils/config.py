@@ -36,91 +36,102 @@ def get_env_var(key: str, default: Optional[str] = None) -> str:
     return value
 
 
-def get_env_bool(key: str, default: bool = False) -> bool:
+def get_env_bool(key: str) -> bool:
     """
     Get boolean environment variable.
     
     Args:
         key: Environment variable name
-        default: Default boolean value
         
     Returns:
         Boolean value from environment
+        
+    Raises:
+        ValueError: If environment variable is not set
     """
-    value = os.getenv(key, str(default)).lower()
-    return value in ("true", "1", "yes", "on")
+    value = os.getenv(key)
+    if value is None:
+        raise ValueError(f"Environment variable {key} is required but not set")
+    return value.lower() in ("true", "1", "yes", "on")
 
 
-def get_env_int(key: str, default: Optional[int] = None) -> int:
+def get_env_int(key: str) -> int:
     """
     Get integer environment variable.
     
     Args:
         key: Environment variable name
-        default: Default integer value
         
     Returns:
         Integer value from environment
+        
+    Raises:
+        ValueError: If environment variable is not set
     """
     value = os.getenv(key)
     if value is None:
-        if default is None:
-            raise ValueError(f"Environment variable {key} is required but not set")
-        return default
+        raise ValueError(f"Environment variable {key} is required but not set")
     return int(value)
 
 
-def get_env_float(key: str, default: Optional[float] = None) -> float:
+def get_env_float(key: str) -> float:
     """
     Get float environment variable.
     
     Args:
         key: Environment variable name
-        default: Default float value
         
     Returns:
         Float value from environment
+        
+    Raises:
+        ValueError: If environment variable is not set
     """
     value = os.getenv(key)
     if value is None:
-        if default is None:
-            raise ValueError(f"Environment variable {key} is required but not set")
-        return default
+        raise ValueError(f"Environment variable {key} is required but not set")
     return float(value)
 
 
-def get_env_list(key: str, default: List[str]) -> List[str]:
+def get_env_list(key: str) -> List[str]:
     """
     Get environment variable as comma-separated list.
     
     Args:
         key: Environment variable name
-        default: Default list value
         
     Returns:
         List of strings from comma-separated environment variable
+        
+    Raises:
+        ValueError: If environment variable is not set
     """
-    value = os.getenv(key, "")
+    value = os.getenv(key)
     if not value:
-        return default
+        raise ValueError(f"Environment variable {key} is required but not set")
     return [item.strip() for item in value.split(",") if item.strip()]
 
 
-def get_env_dict(key: str, default: Dict[str, float]) -> Dict[str, float]:
+def get_env_dict(key: str, fallback_dict: Dict[str, float]) -> Dict[str, float]:
     """
     Get environment variable as key:value dictionary.
     Supports quoted keys for names with special characters.
     
     Args:
         key: Environment variable name
-        default: Default dictionary value
+        fallback_dict: Dictionary to use if environment variable is not set
         
     Returns:
         Dictionary parsed from key:value pairs in environment variable
+        
+    Raises:
+        ValueError: If environment variable is not set and no fallback provided
     """
-    value = os.getenv(key, "")
+    value = os.getenv(key)
     if not value:
-        return default
+        if not fallback_dict:
+            raise ValueError(f"Environment variable {key} is required but not set")
+        return fallback_dict
     
     result = {}
     for item in value.split(","):
