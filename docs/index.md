@@ -26,6 +26,7 @@ Explore our comprehensive documentation to understand Corelia's mission and tech
 - **[Training Datasets](datasets.md)**: French medical NER datasets and licensing considerations
 - **[Security & Compliance](security-compliance.md)**: Full transparency on data protection and regulatory compliance
 - **[Competitive Advantage](competitive-advantage.md)**: Why Corelia is uniquely positioned for French healthcare
+- **[Changelog](changelog.md)**: Project development history and milestones
 
 ## Vision
 

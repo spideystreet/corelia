@@ -12,10 +12,6 @@ Each year, over 80% of notes generated in hospitals remain as unstructured text 
 
 ## Our Solution
 
-<div style="text-align: center; margin: 2rem 0;">
-  <img src="../assets/logos/white-on-black.png" alt="Corelia Logo" style="max-width: 200px; height: auto;">
-</div>
-
 Corelia provides an AI platform trained, deployed, and governed in France to significantly simplify the administrative management of healthcare facilities.
 
 ### Core Features
@@ -55,6 +51,10 @@ Corelia addresses the French medical AI gap through a comprehensive three-stage 
 **Open Source Foundation**: The platform is fully open-source, ensuring transparency, auditability, and community-driven development.  
 **Sovereign Infrastructure**: Built and hosted on OVH's SecNumCloud certified infrastructure with ANSSI Visa de Sécurité, ensuring complete data sovereignty and compliance with French regulations.  
 **Privacy by Design**: GDPR compliance and data protection are built into the system from the ground up, ensuring patient privacy and regulatory compliance.
+
+<div style="text-align: center; margin: 1rem 0;">
+  <img src="../assets/logo-sec-num-cloud.png" alt="SecNumCloud Certified" style="max-width: 200px; height: auto;">
+</div>
 
 ## Vision & Impact
 

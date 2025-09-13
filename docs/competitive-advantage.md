@@ -1,44 +1,12 @@
 # Competitive Advantage
 
-## French-First Approach
+## French-First Medical AI
 
 ### Language Specialization
-Unlike international competitors, Corelia is specifically designed for French medical terminology and practices:
-
-- **Google Gemma**: Primarily English-focused, limited French medical support
-- **MedPaLM-2**: English-centric, poor performance on French medical text
-- **Llama-3**: General-purpose, not optimized for medical French
-- **Corelia**: Native French medical AI with deep understanding of local terminology
-
-### Medical Terminology Expertise
-- **Acronyms and Codes**: Specialized handling of French medical abbreviations
-- **Local Practices**: Understanding of French healthcare workflows
-- **Cultural Context**: Adaptation to French medical culture and practices
-- **Regulatory Compliance**: Built-in compliance with French healthcare regulations
-
-## Technical Differentiation
-
-### Model Specialization
-Corelia leverages DrBERT's foundation, pre-trained specifically on French hospital corpus, providing unmatched domain expertise in biomedical and clinical French terminology. The continuous learning approach ensures ongoing improvement with real-world data, while the open-source nature guarantees transparency, auditability, and customization capabilities.
-
-### Performance Excellence
-The platform delivers superior accuracy on French medical text through optimized French language processing. The system provides robust handling of French medical terminology with reliability designed specifically for French healthcare system scale and requirements.
-
-## Strategic Positioning
-
-### Sovereignty and Security
-- **French Development**: Built and maintained in France
-- **Sovereign Cloud**: Hosted on French infrastructure (SecNumCloud/Health Data Hub)
-- **Data Protection**: GDPR compliance from design
-- **National Security**: No dependency on foreign AI systems
-
-### Open Source Strategy
-- **Transparency**: Full code visibility and auditability
-- **Community**: Open development and contribution model
-- **Trust**: Healthcare institutions can verify and customize
-- **Innovation**: Collaborative improvement with medical community
-
-## Market Differentiation
+- **Native French**: Designed specifically for French medical terminology
+- **Medical Expertise**: Deep understanding of French healthcare practices
+- **Cultural Context**: Adaptation to French medical culture and workflows
+- **Regulatory Compliance**: Built-in French healthcare regulations
 
 ### vs. International Competitors
 
@@ -47,77 +15,38 @@ The platform delivers superior accuracy on French medical text through optimized
 | French Medical Focus | ✅ Native | ❌ Limited | ❌ Poor | ❌ General |
 | Open Source | ✅ Full | ❌ Proprietary | ❌ Proprietary | ✅ Partial |
 | French Compliance | ✅ Built-in | ❌ External | ❌ External | ❌ External |
-| Medical Specialization | ✅ Deep | ❌ General | ✅ Medical | ❌ General |
 | Sovereignty | ✅ French | ❌ US | ❌ US | ❌ US |
 
-### vs. Local Solutions
-- **Technical Depth**: Advanced AI vs. traditional rule-based systems
-- **Scalability**: Cloud-native vs. on-premise limitations
-- **Integration**: Modern APIs vs. legacy system integration
-- **Innovation**: Cutting-edge AI vs. outdated approaches
+## Strategic Advantages
 
-## Unique Value Propositions
+### Medical AI Sovereignty
+- **French Development**: Built and maintained in France
+- **Sovereign Infrastructure**: OVH SecNumCloud hosting
+- **Data Control**: Complete control over data and processing
+- **No Foreign Dependencies**: Independent from US/Chinese AI systems
 
-### 1. Medical AI Sovereignty
-- **Independence**: No reliance on foreign AI systems
-- **Control**: Full control over data and processing
-- **Security**: French-hosted and managed infrastructure
-- **Compliance**: Native French regulatory compliance
+### Open Source Foundation
+- **Transparency**: Full code and model visibility
+- **Customization**: Healthcare institutions can verify and adapt
+- **Community**: Collaborative development with medical professionals
+- **Trust**: Complete auditability of AI decisions
 
-### 2. Open Source Transparency
-- **Auditability**: Complete code and model transparency
-- **Customization**: Ability to modify and adapt
-- **Trust**: Healthcare institutions can verify system behavior
-- **Community**: Collaborative development and improvement
+### Technical Excellence
+- **DrBERT Foundation**: Pre-trained on French hospital corpus
+- **Mistral-7B**: Native French language processing
+- **ICD-10-FR**: Built-in French medical coding standards
+- **End-to-End**: Complete pipeline from text to structured data
 
-### 3. French Medical Expertise
-- **Language**: Native French medical terminology understanding
-- **Context**: Deep knowledge of French healthcare practices
-- **Standards**: Built-in ICD-10-FR and French medical standards
-- **Integration**: Seamless integration with French healthcare systems
+## Market Position
 
-### 4. Comprehensive Solution
-- **End-to-End**: Complete pipeline from raw text to structured data
-- **Standards**: Full compliance with French healthcare standards
-- **Scalability**: Designed for national healthcare system scale
-- **Support**: French-based support and development team
+### Unique Value Propositions
+1. **Only French-native medical AI** with deep healthcare expertise
+2. **Open source transparency** for healthcare trust and auditability
+3. **Sovereign infrastructure** ensuring data protection and compliance
+4. **Comprehensive solution** from unstructured text to medical codes
 
-## Competitive Barriers
-
-### Technical Barriers
-- **Data Advantage**: Access to French medical training data
-- **Model Expertise**: Specialized knowledge of French medical AI
-- **Integration**: Deep understanding of French healthcare systems
-- **Performance**: Superior accuracy on French medical text
-
-### Strategic Barriers
+### Competitive Barriers
 - **First Mover**: Early entry into French medical AI market
-- **Partnerships**: Established relationships with French hospitals
-- **Compliance**: Built-in regulatory compliance
-- **Community**: Growing open-source community and ecosystem
-
-### Economic Barriers
-- **Cost Structure**: Open-source model reduces licensing costs
-- **Efficiency**: Optimized for French healthcare workflows
-- **ROI**: Faster implementation and better results
-- **Total Cost**: Lower total cost of ownership
-
-## Future Competitive Positioning
-
-### Innovation Leadership
-- **Research**: Continuous investment in medical AI research
-- **Standards**: Influence on French medical AI standards
-- **Ecosystem**: Building comprehensive medical AI ecosystem
-- **Partnerships**: Strategic partnerships with research institutions
-
-### Market Expansion
-- **Vertical Integration**: Expansion into related medical AI applications
-- **Geographic**: Potential expansion to other French-speaking regions
-- **Horizontal**: Extension to other healthcare AI applications
-- **Platform**: Evolution into comprehensive healthcare AI platform
-
-### Sustainable Advantage
-- **Community**: Strong open-source community
-- **Data**: Continuous improvement with real-world data
-- **Expertise**: Deep French medical AI expertise
-- **Innovation**: Continuous innovation and improvement
+- **Data Advantage**: Access to French medical training datasets
+- **Technical Expertise**: Specialized knowledge of French medical AI
+- **Regulatory Compliance**: Built-in EU AI Act and GDPR compliance

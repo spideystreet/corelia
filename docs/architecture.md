@@ -4,12 +4,17 @@
 
 Corelia implements a three-stage AI pipeline for processing medical notes:
 
-```mermaid
-graph LR
-    A[Raw Medical Notes] --> B[Mistral-7B<br/>Enhancement]
-    B --> C[DrBERT-7GB<br/>Entity Extraction]
-    C --> D[XMEN<br/>ICD-10-FR Mapping]
-    D --> E[Structured Output]
+```
+┌─────────────────────┐    ┌─────────────────────┐    ┌─────────────────────┐    ┌─────────────────────┐
+│   Raw Medical Notes │───▶│   Mistral-7B        │───▶│   DrBERT-7GB        │───▶│   XMEN              │
+│   (Unstructured)    │    │   Enhancement       │    │   Entity Extraction │    │   ICD-10-FR Mapping │
+└─────────────────────┘    └─────────────────────┘    └─────────────────────┘    └─────────────────────┘
+                                                                                            │
+                                                                                            ▼
+                                                                                    ┌─────────────────────┐
+                                                                                    │  Structured Output  │
+                                                                                    │  (Standardized)     │
+                                                                                    └─────────────────────┘
 ```
 
 ## Component Details
@@ -48,6 +53,11 @@ It provides robust performance against stylistic and structural variations in no
 **Architecture**: BERT-based  
 **Language**: French-optimized  
 
+**Training Datasets**:
+- **[MantraGSC](https://huggingface.co/datasets/bigbio/mantra_gsc)**: French medical entity recognition dataset
+- **[QUAERO](https://huggingface.co/datasets/DrBenchmark/QUAERO)**: French biomedical NER benchmark
+- **[MedicalNER_Fr](https://huggingface.co/datasets/TypicaAI/MedicalNER_Fr)**: French medical named entity recognition dataset
+
 **Capabilities**: The model excels at Named Entity Recognition (NER) for medical terms, identifying diseases, symptoms, treatments, and medications with high accuracy. 
 It performs clinical concept extraction, understanding complex medical relationships and contexts. 
 The system demonstrates superior French medical terminology understanding, including regional variations and specialized vocabulary. 
@@ -60,6 +70,7 @@ It effectively recognizes medical acronyms and codes, crucial for French healthc
 **Tool**: [XMEN](https://github.com/hpi-dhc/xmen)  
 **Function**: Medical entity recognition and coding  
 **Target**: ICD-10-FR (French version of ICD-10)  
+**Source**: [CIM-10 FR PMSI](https://smt.esante.gouv.fr/terminologie-cim-10/) - Official French terminology with 19,162 concepts  
 **Integration**: Automated mapping pipeline  
 
 **Capabilities**: The system provides automated medical coding, reducing manual effort and human error in the coding process. 
