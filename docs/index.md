@@ -1,12 +1,16 @@
 # Welcome to Corelia
 
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="assets/logos/logo-and-name.png" alt="Corelia Logo" style="width: 100%; max-width: none; height: auto;">
+</div>
+
 **AI-powered medical note processing for French healthcare**
 
 Corelia is an open-source AI platform designed to transform unstructured medical reports into structured, actionable insights. Built specifically for French medical terminology and practices, Corelia aims to become the reference solution for medical AI in France.
 
 ## Key Features
 
-Corelia provides comprehensive medical note processing through several core capabilities. The platform enhances medical reports by transforming doctor's notes into clean, AI-exploitable insights with 95%+ accuracy rates. Our entity extraction system uses DrBERT-7GB, trained specifically on French hospital corpus, to identify and extract medical entities with superior performance compared to international alternatives. The system automatically maps these entities to standardized French medical codes (ICD-10-FR), ensuring full compliance with national healthcare standards and reducing manual coding time by 80%. Built and hosted entirely in France on OVH's SecNumCloud certified infrastructure, Corelia maintains full GDPR compliance, HDS certification, ANSSI Visa de Sécurité, and complete data sovereignty.
+Corelia provides comprehensive medical note processing through several core capabilities. The platform enhances medical reports by transforming doctor's notes into clean, AI-exploitable insights with a goal of >90% accuracy rates. Our entity extraction system uses a fine-tuned Mistral-7B for enhancement and normalization, followed by DrBERT-7GB for Named Entity Recognition (NER), trained specifically on French hospital corpus, to identify and extract medical entities with superior performance compared to international alternatives. The system automatically maps these entities to standardized French medical codes (ICD-10-FR), ensuring full compliance with national healthcare standards with a goal of reducing manual coding time by 50-70%. Built and hosted entirely in France on OVH's SecNumCloud certified infrastructure, Corelia maintains full GDPR compliance, HDS certification, ANSSI Visa de Sécurité, and complete data sovereignty.
 
 ## Technical Architecture
 
@@ -14,11 +18,18 @@ Our three-stage AI pipeline processes medical notes through a carefully designed
 
 ## Documentation
 
-Explore our comprehensive documentation to understand Corelia's mission and technical approach. The [Project Overview](overview.md) provides a complete understanding of Corelia's mission and strategic approach. Our [System Architecture](architecture.md) details the technical implementation of our AI pipeline with performance specifications. The [Research Insights](research-insights.md) section explains our technical choices and research findings supporting our approach. The [Training Datasets](datasets.md) section covers the French medical NER datasets and licensing considerations. Our [Security & Compliance](security-compliance.md) documentation ensures full transparency on data protection and regulatory compliance. Finally, our [Competitive Advantage](competitive-advantage.md) explains why Corelia is uniquely positioned for French healthcare.
+Explore our comprehensive documentation to understand Corelia's mission and technical approach:
+
+- **[Project Overview](overview.md)**: Complete understanding of Corelia's mission and strategic approach
+- **[System Architecture](architecture.md)**: Technical implementation of our AI pipeline with performance specifications
+- **[Research Insights](research-insights.md)**: Technical choices and research findings supporting our approach
+- **[Training Datasets](datasets.md)**: French medical NER datasets and licensing considerations
+- **[Security & Compliance](security-compliance.md)**: Full transparency on data protection and regulatory compliance
+- **[Competitive Advantage](competitive-advantage.md)**: Why Corelia is uniquely positioned for French healthcare
 
 ## Vision
 
-Corelia aims to become the reference building block for French medical AI: free, efficient, evolutive, and faithful to the general interest. The platform transforms every medical report into a sovereign and exploitable resource for better care, prevention, and management.
+Corelia aims to become the reference building block for French medical AI: easy, efficient, evolutive, and faithful to the general interest. The platform transforms every medical report into a sovereign and exploitable resource for better care, prevention, and management.
 
 ---
 
