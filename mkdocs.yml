@@ -1,11 +1,11 @@
 site_name: Corelia Documentation
 site_description: Documentation for Corelia project
 site_author: "[Hicham](https://www.linkedin.com/in/hicham-djebali/)"
-site_url: https://medaille-fr.github.io/corelia
+site_url: https://spideystreet.github.io/corelia
 
 # Repository
-repo_name: medaille-fr/corelia
-repo_url: https://github.com/medaille-fr/corelia
+repo_name: spideystreet/corelia
+repo_url: https://github.com/spideystreet/corelia
 edit_uri: edit/main/docs/
 
 # Theme

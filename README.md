@@ -40,7 +40,7 @@ Corelia provides a sovereign AI platform that:
 
 **Before Corelia** | **After Corelia**
 :---:|:---:
-<img src="docs/assets/reports/bad-report.png" alt="Unstructured medical report" width="250"> | <img src="docs/assets/reports/good-report.png" alt="Structured medical report" width="250">
+<img src="docs/assets/reports/bad-report.png" alt="Unstructured medical report" width="400"> | <img src="docs/assets/reports/good-report.png" alt="Structured medical report" width="400">
 *Unstructured, handwritten notes* | *Structured, standardized report*
 
 </div>
