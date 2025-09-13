@@ -103,14 +103,24 @@ class DatasetLoader:
             Dictionary of loaded datasets with their weights and splits
         """
         # Get datasets configuration from environment
-        datasets_config = get_env_dict(
-            "DATASETS_MISTRAL", 
-            {
-                "chapin/NACHOS_large": get_env_float("DATASET_WEIGHT_NACHOS"),
-                "Abirate/mediqal": get_env_float("DATASET_WEIGHT_MEDIQAL"),
-                "alicelacaille/FRASIMED": get_env_float("DATASET_WEIGHT_FRASIMED")
-            }
-        )
+        dataset_names = get_env_list("DATASETS_MISTRAL")
+        
+        # Create datasets config with individual weights
+        datasets_config = {}
+        for dataset_name in dataset_names:
+            # Map dataset names to their weight variables
+            if "NACHOS" in dataset_name:
+                weight = get_env_float("DATASET_WEIGHT_NACHOS")
+            elif "mediqal" in dataset_name.lower():
+                weight = get_env_float("DATASET_WEIGHT_MEDIQAL")
+            elif "FRASIMED" in dataset_name:
+                weight = get_env_float("DATASET_WEIGHT_FRASIMED")
+            else:
+                # Default weight for unknown datasets
+                weight = 1.0
+                self.logger.warning(f"Unknown dataset {dataset_name}, using default weight 1.0")
+            
+            datasets_config[dataset_name] = weight
         
         loaded_datasets = {}
         
