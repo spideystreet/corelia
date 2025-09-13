@@ -1,6 +1,6 @@
 site_name: Corelia Documentation
 site_description: Documentation for Corelia project
-site_author: Corelia Team
+site_author: "[Hicham](https://www.linkedin.com/in/hicham-djebali/)"
 site_url: https://medaille-fr.github.io/corelia
 
 # Repository
@@ -11,6 +11,8 @@ edit_uri: edit/main/docs/
 # Theme
 theme:
   name: material
+  logo: docs/assets/logos/white.png
+  favicon: docs/assets/logos/favicon.png
   features:
     - navigation.tabs
     - navigation.sections
@@ -50,10 +52,13 @@ plugins:
 extra_css:
   - stylesheets/extra.css
 
+
 # Navigation
 nav:
   - Home: index.md
   - Overview: overview.md
   - Architecture: architecture.md
+  - Research Insights: research-insights.md
   - Datasets: datasets.md
+  - Security & Compliance: security-compliance.md
   - Competitive Advantage: competitive-advantage.md
