@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="docs/assets/logos/logo-and-name.png" alt="Corelia Logo" width="300">
+  <img src="docs/assets/logos/logo-and-name.png" alt="Corelia Logo" width="100%">
 </div>
 
 </br>
