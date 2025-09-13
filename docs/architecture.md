@@ -87,3 +87,48 @@ This standardization enables seamless interoperability with existing French heal
 ## Technical Specifications
 
 *Technical specifications and performance metrics are currently under development and will be updated as the project progresses.*
+
+## Dataset Mapping Tables
+
+### Field Mapping Across Datasets
+
+The following table shows how common data fields are mapped across the three main datasets used in our training pipeline:
+
+| Description | MantraGSC | QUAERO | MedicalNER_Fr |
+|-------------|-----------|--------|---------------|
+| **Text/document identifier** | `document_id` | `doc_id` | `sample_id / sentence_id` |
+| **Annotated text content** | `text` | `text` | `text` |
+| **Start and end offset of entity** | `start, end` | `start_offset, end_offset` | `start, end (ou ner_tags_span/)` |
+| **Named entity text** | `span` | `mention / entity` | `entity / ner_tags_span` |
+| **Entity type (Disease, Chemical...)** | `label` | `semantic_group` | `label / ner_tags / ner_tags_span` |
+| **Concept identifier (UMLS/CUI if available)** | `cui` | `concept_id` | `cui (si présent)` |
+| **Annotation source (optional)** | `source` | `source` | `-` |
+
+### Entity Type Mapping
+
+This table shows how different entity types are aligned across the three datasets:
+
+| Merged Concept | MantraGSC | QUAERO | MedicalNER_Fr |
+|----------------|-----------|--------|---------------|
+| **Concept fusionné** | MantraGSC | QUAERO | MedicalNER_Fr |
+| **Anatomy** | Anatomy | Anatomy | AnatomicalStructure |
+| **Disease/Disorder** | Disorder | Disorder | Disease |
+| **Chemical/Drug** | Substance | Chemical and Drugs | Medication/Vaccine |
+| **Device** | Device | Device | Device |
+| **Procedure** | Procedure | Procedure | MedicalProcedure |
+| **Symptom** | Symptom | Symptom | Symptom |
+| **Phenomenon** | Phenomenon | Phenomenon | - |
+| **Physiology** | Physiology | Physiology | - |
+| **LivingBeing** | LivingBeing | LivingBeing | - |
+| **Object** | Object | Object | - |
+| **Geography** | Geography | Geographic Areas | - |
+| **LOC/PER/CW/PROD...** | - | - | LOC, PER, CW, PROD |
+
+### Mapping Strategy
+
+Our pipeline handles these mappings through:
+
+1. **Unified Schema**: We maintain a canonical entity type schema that accommodates all dataset variations
+2. **Flexible Parsing**: The preprocessing stage normalizes field names and entity types across datasets
+3. **Cross-Dataset Training**: During fine-tuning, we ensure the models learn from the full spectrum of entity types and naming conventions
+4. **Robust Inference**: At inference time, the system can handle various input formats and automatically map them to our internal representation
