@@ -109,6 +109,7 @@ def get_env_list(key: str, default: List[str]) -> List[str]:
 def get_env_dict(key: str, default: Dict[str, float]) -> Dict[str, float]:
     """
     Get environment variable as key:value dictionary.
+    Supports quoted keys for names with special characters.
     
     Args:
         key: Environment variable name
@@ -125,8 +126,16 @@ def get_env_dict(key: str, default: Dict[str, float]) -> Dict[str, float]:
     for item in value.split(","):
         if ":" in item:
             key_part, value_part = item.split(":", 1)
+            
+            # Remove quotes from key if present
+            key_part = key_part.strip()
+            if key_part.startswith('"') and key_part.endswith('"'):
+                key_part = key_part[1:-1]
+            elif key_part.startswith("'") and key_part.endswith("'"):
+                key_part = key_part[1:-1]
+            
             try:
-                result[key_part.strip()] = float(value_part.strip())
+                result[key_part] = float(value_part.strip())
             except ValueError:
                 continue
     return result

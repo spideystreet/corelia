@@ -104,7 +104,7 @@ class DatasetLoader:
         """
         # Get datasets configuration from environment
         datasets_config = get_env_dict(
-            "MISTRAL_DATASETS", 
+            "DATASETS_MISTRAL", 
             {
                 "chapin/NACHOS_large": 0.5,
                 "Abirate/mediqal": 0.25,
