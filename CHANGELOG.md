@@ -7,19 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- Initial project documentation structure
-- Research project setup for French medical LLM
-- DataScientest capstone project context
-- Blog-style documentation format
-- Security and compliance considerations for future deployment
-- Research insights on Mistral-7B vs biomedical models
-- Open-source data collection strategy
+## [0.1.1] - 2025-01-XX
 
-### Changed
-- Documentation restructured for research project focus
-- Removed specific dataset references for IP protection
-- Simplified navigation and content structure
+### Fixed
+- Minor logo and README adjustments
 
 ## [0.1.0] - 2025-01-XX
 
