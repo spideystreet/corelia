@@ -49,11 +49,6 @@ uv sync
 
 📚 **[Full Documentation](https://spideystreet.github.io/corelia)**
 
-- **[Architecture](docs/architecture.md)**: Research pipeline and technical implementation
-- **[Datas](docs/datasets.md)**: Open-source data sources and collection strategy
-- **[Research Insights](docs/research-insights.md)**: Technical choices and research findings
-- **[Security & Compliance](docs/security-compliance.md)**: EU AI Act compliance and data protection for potential future deployment
-
 ## License
 
 AGPL-3.0 License - see [LICENSE](LICENSE) file.
