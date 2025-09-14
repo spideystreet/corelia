@@ -19,12 +19,6 @@
 
 </br>
 
-> 🎓 **Research Project**: Final project for DataScientest Data Engineer program - creating a specialized French medical LLM.
-
-<div align="center">
-  <img src="docs/assets/logos/datascientest.png" alt="DataScientest Logo" width="50%">
-</div>
-
 ---
 
 ## What is Corelia?
