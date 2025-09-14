@@ -56,9 +56,7 @@ extra_css:
 # Navigation
 nav:
   - Home: index.md
-  - Overview: overview.md
   - Architecture: architecture.md
+  - Datas: datasets.md
   - Research Insights: research-insights.md
-  - Datasets: datasets.md
   - Security & Compliance: security-compliance.md
-  - Competitive Advantage: competitive-advantage.md

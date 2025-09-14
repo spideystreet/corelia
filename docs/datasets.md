@@ -1,74 +1,21 @@
-# Training Datasets
+# Data Sources & Strategy
 
-## Overview
+## Open-Source Medical Data Foundation
 
-Corelia uses different datasets for each model in our pipeline: French medical datasets for Mistral-7B enhancement and NER datasets for DrBERT fine-tuning.
+Our research builds upon multiple open-source French medical data sources, including comprehensive collections of medical documents from government health agencies, medical institutions, research papers, and administrative documents. These sources provide a solid foundation for understanding French medical language patterns.
 
-## Mistral-7B Enhancement Datasets
+## Expanding Coverage Through Web Crawling
 
-### 1. NACHOS
-- **Source**: [Hugging Face](https://huggingface.co/datasets/chapin/NACHOS_large)
-- **License**: Research use
-- **Content**: French medical vocabulary and knowledge (~50% of training)
+To ensure we capture the full spectrum of French medical content, we supplement our data sources with targeted web crawling techniques. Our approach targets authoritative French medical websites across different categories:
 
-### 2. MediQAl
-- **Source**: [Hugging Face](https://huggingface.co/datasets/Abirate/mediqal)
-- **License**: Research use
-- **Content**: French medical question-answering (~25% of training)
+**Government Sources**: sante.gouv.fr, ansm.sante.fr, drees.solidarites-sante.gouv.fr, etc.  
+**Medical Institutions**: e-cancer.fr, agence-biomedecine.fr, efs.sante.fr, etc.  
+**Health Services**: msa.fr, alcool-info-service.fr, drogues-info-service.fr, etc.
 
-### 3. FRASIMED
-- **Source**: [Hugging Face](https://huggingface.co/datasets/alicelacaille/FRASIMED)
-- **License**: Research use
-- **Content**: French medical clinical cases (~15% of training)
+## Data Processing Approach
 
-## DrBERT NER Datasets
+The collected content undergoes a rigorous processing pipeline: text extraction from various formats, quality filtering to remove irrelevant content, French medical terminology normalization, and deduplication to ensure data quality.
 
-### 1. MantraGSC
-- **Source**: [Hugging Face](https://huggingface.co/datasets/bigbio/mantra_gsc)
-- **License**: GPL-3.0
-- **Content**: French medical NER annotations
+## Research Ethics & Licensing
 
-### 2. QUAERO
-- **Source**: [Hugging Face](https://huggingface.co/datasets/DrBenchmark/QUAERO)
-- **License**: Research use
-- **Content**: French medical entity recognition
-
-### 3. MedicalNER_Fr
-- **Source**: [Hugging Face](https://huggingface.co/datasets/TypicaAI/MedicalNER_Fr)
-- **License**: CC BY 4.0
-- **Content**: French medical named entity recognition
-
-## License Considerations
-
-⚠️ **Important**: MantraGSC is GPL-3.0 licensed, requiring our code and models to be open-source.
-
-**License Summary**:
-- **MantraGSC**: GPL-3.0 (open-source required)
-- **QUAERO**: Research use
-- **MedicalNER_Fr**: CC BY 4.0 (attribution required)
-
-## Integration Strategy
-
-### Merging Process
-1. **Entity Mapping**: Align entity types across datasets
-2. **Quality Control**: Remove duplicates and inconsistencies
-3. **Standardization**: Normalize annotation formats
-4. **Validation**: Cross-validate annotations for accuracy
-
-### Training Approach
-- **Base Model**: DrBERT-7GB pre-trained weights
-- **Fine-tuning**: Merged French medical NER dataset
-- **Validation**: Held-out test sets for evaluation
-- **Quality Assurance**: Medical expert validation and performance metrics
-
-## Data Privacy
-
-### Anonymization
-- **Patient Data**: All personal information removed
-- **De-identification**: Medical entities preserved, identities protected
-- **Compliance**: GDPR and French data protection laws
-
-### Ethical Framework
-- **Transparency**: Clear documentation of data sources
-- **Attribution**: Proper credit to dataset publishers
-- **Bias Mitigation**: Regular assessment and correction
+All data sources respect open data principles and website terms of service. Our approach prioritizes transparency and responsible data usage throughout the research process, ensuring compliance with licensing requirements and ethical data collection practices.

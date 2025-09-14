@@ -9,45 +9,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Initial project documentation structure
-- EU AI Act compliance framework
-- Security and compliance guidelines
+- Research project setup for French medical LLM
+- DataScientest capstone project context
+- Blog-style documentation format
+- Security and compliance considerations for future deployment
 - Research insights on Mistral-7B vs biomedical models
-- Training datasets documentation (NACHOS, MediQAl, FRASIMED, MantraGSC, QUAERO, MedicalNER_Fr)
-- Competitive advantage analysis
-- Project overview and architecture documentation
+- Open-source data collection strategy
 
 ### Changed
-- Documentation structure optimized for POC development phase
-- Security documentation simplified to reflect current development status
+- Documentation restructured for research project focus
+- Removed specific dataset references for IP protection
+- Simplified navigation and content structure
 
-### Security
-- EU AI Act risk classification (High Risk category)
-- GDPR and CNIL compliance roadmap
-- OVH SecNumCloud target infrastructure
-- Data privacy and anonymization framework
-
-## [0.1.0] - 2025-09-13
+## [0.1.0] - 2025-01-XX
 
 ### Added
 - Initial project setup
 - MkDocs documentation framework
 - Project structure planning
-- French medical AI pipeline architecture
+- French medical AI research pipeline architecture
 - Open source foundation and licensing strategy
 
 ---
 
 ## Development Status
 
-**Current Phase**: Proof of Concept (POC) Development
+**Current Phase**: Research Project Development
 
 **Next Milestones**:
-- [ ] Infrastructure setup (OVH SecNumCloud)
-- [ ] Dataset integration and preprocessing
-- [ ] Model fine-tuning pipeline
-- [ ] API development
-- [ ] Security certification processes
-- [ ] Production deployment preparation
+- [ ] Data collection pipeline implementation
+- [ ] French medical corpus assembly
+- [ ] Mistral-7B continual pre-training setup
+- [ ] Model evaluation framework
+- [ ] Research documentation and results
 
 ## Contributing
 
@@ -55,4 +49,4 @@ Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on our cod
 
 ## License
 
-This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the AGPL-3.0 License - see the [LICENSE](LICENSE) file for details.

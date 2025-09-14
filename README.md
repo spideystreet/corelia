@@ -5,7 +5,7 @@
 </br>
 
 <div align="center">
-  <strong>Open-source AI platform for French medical report processing</strong>
+  <strong>Corelia LLM - BioMistral but... for French Healthcare</strong>
 </div>
 
 <div align="center">
@@ -13,93 +13,53 @@
     <img src="https://img.shields.io/badge/license-AGPL--3.0-blue.svg" alt="License">
   </a>
   <a href="https://github.com/spideystreet/corelia">
-    <img src="https://img.shields.io/badge/status-in%20development-orange.svg" alt="Status">
+    <img src="https://img.shields.io/badge/status-research%20project-orange.svg" alt="Status">
   </a>
 </div>
 
 </br>
 
-> ⚠️ **Important Notice**: This project is currently in active development. 
-> ***Do not use for any medical administrative purposes,*** as no stable release is available yet. 
+> 🎓 **Research Project**: Final project for DataScientest Data Engineer program - creating a specialized French medical LLM.
 
-This is an early-stage project that has just begun development.
+<div align="center">
+  <img src="docs/assets/logos/datascientest.png" alt="DataScientest Logo" width="100">
+</div>
 
 ---
 
 ## What is Corelia?
 
-Corelia is an open-source AI platform designed to transform unstructured French medical reports into structured, actionable insights. Built specifically for French healthcare, it leverages advanced natural language processing to extract medical entities and map them to ICD-10-FR codes, ensuring compliance and data sovereignty.
+Corelia is a research project exploring how to create a **French BioMistral** - a specialized medical LLM for French healthcare. While BioMistral excels in English medical applications, there's no equivalent for French medicine, creating a significant gap in the French healthcare AI ecosystem.
 
-## The Problem
+## Our Research Approach
 
-Each year, over 80% of medical notes generated in French hospitals remain as unstructured text that cannot be exploited - representing more than 50 million annual documents whose medical, administrative, and epidemiological value remains largely underutilized.
+We're leveraging multiple open-source French medical data sources from the web to build the largest French medical corpus ever assembled. This comprehensive dataset will be used for continual pre-training of Mistral-7B, creating a model that truly understands French medical terminology, healthcare system specifics, and clinical reasoning patterns.
 
-## Our Solution
-
-Corelia provides a sovereign AI platform that:
-
-- **Enhances** unstructured medical reports into clean, standardized formats
-- **Extracts** medical entities using specialized French-trained models  
-- **Maps** entities to ICD-10-FR codes for regulatory compliance
-- **Reduces** manual coding time by 50-70%
-
-## Before vs After
-
-<div align="center">
-
-**Before Corelia** | **After Corelia**
-:---:|:---:
-<img src="docs/assets/reports/bad-report.png" alt="Unstructured medical report" width="400"> | <img src="docs/assets/reports/good-report.png" alt="Structured medical report" width="400">
-*Unstructured, handwritten notes* | *Structured, standardized report*
-
-</div>
-
-## ICD-10-FR Code Proposals
-
-<div align="center">
-  <img src="docs/assets/cim-10-fr-proposal.png" alt="ICD-10-FR Code Proposals" width="600">
-  <br><em>AI-generated code suggestions for medical validation</em>
-</div>
-
-## Key Features
-
-- **French-First Design** - Built specifically for French medical terminology
-- **Data Sovereignty** - SecNumCloud certified infrastructure
-- **High Accuracy** - >90% accuracy rates in medical entity extraction
-- **Healthcare Compliance** - Full ICD-10-FR compatibility
-- **Open Source** - Transparent and community-driven development
-
-
-<div align="center">
-  <img src="./docs/assets/logo-sec-num-cloud.png" alt="SecNumCloud Certified" width="200">
-</div>
-
+**Why this matters**: Beyond being a capstone project, this research has significant potential for advancing French medical AI and contributing to sovereign healthcare technology.
 
 ## Getting Started
 
 ```bash
-# Clone the repository
 git clone https://github.com/spideystreet/corelia.git
 cd corelia
-
-# Install dependencies
 uv sync
 ```
 
 ## Documentation
 
-📚 **[Full Documentation](https://spideystreet.github.io/corelia)** - Complete guides, API reference, and examples
+📚 **[Full Documentation](https://spideystreet.github.io/corelia)**
+
+- **[Architecture](docs/architecture.md)**: Research pipeline and technical implementation
+- **[Datas](docs/datasets.md)**: Medical-Commons dataset and data sources
+- **[Research Insights](docs/research-insights.md)**: Technical choices and research findings
+- **[Security & Compliance](docs/security-compliance.md)**: EU AI Act compliance and data protection for potential future deployment
 
 ## License
 
-This project is licensed under the AGPL-3.0 License - see the [LICENSE](LICENSE) file for details.
-
-## Vision
-
-By 2030, Corelia aims to become the standard infrastructure for French medical AI, processing millions of medical documents daily while maintaining the highest standards of privacy, security, and medical accuracy.
+AGPL-3.0 License - see [LICENSE](LICENSE) file.
 
 ---
 
 <div align="center">
-  <strong>Built with ❤️ for French Healthcare</strong>
+  <strong>Built with ❤️ for French Healthcare Research</strong>
 </div>
