@@ -17,9 +17,9 @@
 
 ---
 
-*Corelia est un projet de recherche open source visant à créer un LLM médical adapté à la santé française.*
+*Corelia est un projet de recherche open source adapté à la santé française.*
 
-L’ambition : fournir une base souveraine et libre pour la recherche IA appliquée au secteur médical en France.
+L’ambition : fournir une base souveraine et libre d'IA appliquée au secteur médical en France.
 
 ---
 
